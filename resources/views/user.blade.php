@@ -8,6 +8,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Chi tiết</th>
+                <th scope="col">Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +17,12 @@
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{$value->name}}</td>
                 <td>{{$value->email}}</td>
-            <td><a class="btn btn-success" href="{{url('user/'.$value->id.'/detail')}}">Xem</a></td>
+                <td><a class="btn btn-success" href="{{route('user.detail',[$value->id])}}">Xem</a></td>
+                
+                <td>
+                    <a class="btn btn-warning" href="{{route('user.edit',[$value->id])}}">Sửa</a>
+                    <a class="btn btn-danger" href="">Xóa</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

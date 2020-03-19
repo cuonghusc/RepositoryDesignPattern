@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('edit',compact('id'));
     }
 
     /**
