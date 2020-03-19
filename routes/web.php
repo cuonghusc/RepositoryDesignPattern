@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('user', 'UserController');
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', 'UserController@index');
+    Route::get('{id}/detail', 'UserController@detail');
+});
