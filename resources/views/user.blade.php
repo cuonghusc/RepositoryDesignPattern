@@ -18,7 +18,7 @@
                 <td>{{$value->name}}</td>
                 <td>{{$value->email}}</td>
                 <td><a class="btn btn-success" href="{{route('user.detail',[$value->id])}}">Xem</a></td>
-                
+                {{-- /user/id/detail  --}}
                 <td>
                     <a class="btn btn-warning" href="{{route('user.edit',[$value->id])}}">Sửa</a>
                     <a class="btn btn-danger" href="">Xóa</a>
