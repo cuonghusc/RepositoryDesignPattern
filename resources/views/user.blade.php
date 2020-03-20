@@ -16,7 +16,7 @@
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{$value->name}}</td>
-                <td>{{$value->email}}</td>
+                <td>{{$value->birthday}}</td>
                 <td><a class="btn btn-success" href="{{route('user.detail',[$value->id])}}">Xem</a></td>
                 {{-- /user/id/detail  --}}
                 <td>

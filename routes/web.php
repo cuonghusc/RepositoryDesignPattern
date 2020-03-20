@@ -17,8 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/', 'UserController@index')->name('user');
-    Route::get('{id}/detail', 'UserController@detail')->name('user.detail');
-    Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+// Route::group(['prefix' => 'user'], function () {
+//     Route::get('/', 'UserController@index')->name('user');
+//     Route::get('{id}/detail', 'UserController@detail')->name('user.detail');
+//     Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+// });
+
+Route::group(['prefix' => 'student'], function () {
+    Route::get('/', 'StudentController@index')->name('student.list');
+    Route::get('{id}/detail', 'StudentController@detail')->name('student.detail');
+    Route::get('{id}/edit', 'StudentController@edit')->name('student.edit');
 });
