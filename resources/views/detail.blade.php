@@ -10,21 +10,33 @@
                 </div>
                 <div class="col col-sm-6">
                     <table class="table table-light">
-                        <thead class="thead-light">
+                        <tbody class="thead-light">
                             <tr>
-                                <th>ID</th>
-                                <th>{{ $detail->id}}</th>
+                                <td>ID</td>
+                                <td>{{ $detail->id}}</td>
                             </tr>
                             <tr>
-                                <th>Name</th>
-                                <th>{{ $detail->name}}</th>
+                                <td>Name</td>
+                                <td>{{ $detail->name}}</td>
                             </tr>
                             <tr>
-                                <th>Email</th>
-                                <th>{{ $detail->email}}</th>
+                                <td>Email</td>
+                                <td>{{ $detail->email}}</td>
                             </tr>
-                        </thead>
+                            <tr>
+                                <td>Birthday</td>
+                                <td>{{ $detail->birthday}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>{{ $detail->address}}</td>
+                            </tr>
+                        </tbody>
                     </table>
+                    <div class="pull-right">
+                    <a class="btn btn-warning" href="{{route('student.edit',$detail->id)}}">Sửa</a>
+                        <a class="btn btn-danger" href="">Xóa</a>
+                    </div>
                 </div>
             </div>            
         </div>        

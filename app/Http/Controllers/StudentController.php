@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Student\StudentRepositoryInterface;
+use App\Repositories\Student\StudentRepository;
 
 class StudentController extends Controller
 {
@@ -19,7 +21,7 @@ class StudentController extends Controller
     public function index()
     {
         $student = $this->studentRepository->getAllList();
-        return view('student.list',compact('student'));
+        return view('list',compact('student'));
     }
 
     /**
@@ -29,7 +31,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -40,7 +42,25 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
+            'birthday' => 'required'
+        ], [
+            'name.required' => '* Name is required',
+            'email.required' => '* Email is required',
+            'address.required' => '* Address is required',
+            'birthday.required' => '* Birthday is required',
+        ]);
+
+        $input = $request->all();
+        
+        $student = StudentRepository::store($input);
+        if (isset($student->id) == false) {
+            \App::abort(500);
+        }
+        return back()->with('success', 'Successfully !');
     }
 
     /**
@@ -49,9 +69,10 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $detail = $this->studentRepository->findByID($id);
+        return view('detail',compact('detail'));
     }
 
     /**
@@ -62,7 +83,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = $this->studentRepository->findByID($id);
+        return view('edit',compact('edit'));
     }
 
     /**
